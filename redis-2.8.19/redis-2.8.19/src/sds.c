@@ -202,8 +202,7 @@ size_t sdsAllocSize(sds s) {
  * nread = read(fd, s+oldlen, BUFFER_SIZE);
  * ... check for nread <= 0 and handle it ...
  * sdsIncrLen(s, nread);
- * 在现有的sds基础上增加指定长度，该函数用于增加(减小)指定长度之后在当前sds string的基础写东西，
- * 可以用在直接使用kernel空间避免使用中间缓冲区
+ * 增加或者减小sds的属性len。该函数通常用在对sdsMakeRoomFor()返回的shs进行追加内容后修正sds的len属性
  */
 void sdsIncrLen(sds s, int incr) {
     struct sdshdr *sh = (void*) (s-(sizeof(struct sdshdr)));
@@ -318,7 +317,7 @@ sds sdscpy(sds s, const char *t) {
  * 把longlong 64位长整形追加到已有string,注意已有string的空间必须大于21，因为longlong类型最大值有20位
  *
  */
-#define SDS_LLSTR_SIZE 21   //unsigned  long long ->2^64-1=18446744073709551615 最长20位
+#define SDS_LLSTR_SIZE 21   //long long的最大值：9223372036854775807 19位+1个符号位
 int sdsll2str(char *s, long long value) {
     char *p, aux;
     unsigned long long v;
