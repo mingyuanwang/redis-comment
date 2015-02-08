@@ -1,0 +1,299 @@
+---- redislog Matches (298 in 12 files) ----
+Aof.c (src):                redisLog(level,"Background AOF buffer size: %lu MB",
+Aof.c (src):        redisLog(REDIS_NOTICE,"Killing running AOF rewrite child: %ld",
+Aof.c (src):        redisLog(REDIS_WARNING,"Redis needs to enable the AOF but can't open the append only file: %s",strerror(errno));
+Aof.c (src):        redisLog(REDIS_WARNING,"Redis needs to enable the AOF but can't trigger a background AOF rewrite operation. Check the above logs for more info about the error.");
+Aof.c (src):            redisLog(REDIS_NOTICE,"Asynchronous AOF fsync is taking too long (disk is busy?). Writing the AOF buffer without waiting for fsync to complete, this may slow down Redis.");
+Aof.c (src):                redisLog(REDIS_WARNING,"Error writing to the AOF file: %s",
+Aof.c (src):                redisLog(REDIS_WARNING,"Short write while writing to "
+Aof.c (src):                    redisLog(REDIS_WARNING, "Could not remove short write "
+Aof.c (src):            redisLog(REDIS_WARNING,"Can't recover from AOF write error when the AOF fsync policy is 'always'. Exiting...");
+Aof.c (src):            redisLog(REDIS_WARNING,
+Aof.c (src):        redisLog(REDIS_WARNING,"Fatal error: can't open the append log file for reading: %s",strerror(errno));
+Aof.c (src):            redisLog(REDIS_WARNING,"Unknown command '%s' reading the append only file", (char*)argv[0]->ptr);
+Aof.c (src):        redisLog(REDIS_WARNING,"Unrecoverable error reading the append only file: %s", strerror(errno));
+Aof.c (src):        redisLog(REDIS_WARNING,"!!! Warning: short read while loading the AOF file !!!");
+Aof.c (src):        redisLog(REDIS_WARNING,"!!! Truncating the AOF at offset %llu !!!",
+Aof.c (src):                redisLog(REDIS_WARNING,"Last valid command offset is invalid");
+Aof.c (src):                redisLog(REDIS_WARNING,"Error truncating the AOF file: %s",
+Aof.c (src):                redisLog(REDIS_WARNING,"Can't seek the end of the AOF file: %s",
+Aof.c (src):                redisLog(REDIS_WARNING,
+Aof.c (src):    redisLog(REDIS_WARNING,"Unexpected end of file reading the append only file. You can: 1) Make a backup of your AOF file, then use ./redis-check-aof --fix <filename>. 2) Alternatively you can set the 'aof-load-truncated' configuration option to yes and restart the server.");
+Aof.c (src):    redisLog(REDIS_WARNING,"Bad file format reading the append only file: make a backup of your AOF file, then use ./redis-check-aof --fix <filename>");
+Aof.c (src):        redisLog(REDIS_WARNING, "Opening the temp file for AOF rewrite in rewriteAppendOnlyFile(): %s", strerror(errno));
+Aof.c (src):        redisLog(REDIS_WARNING,"Error moving temp append only file on the final destination: %s", strerror(errno));
+Aof.c (src):    redisLog(REDIS_NOTICE,"SYNC append only file rewrite performed");
+Aof.c (src):    redisLog(REDIS_WARNING,"Write error writing append only file on disk: %s", strerror(errno));
+Aof.c (src):                redisLog(REDIS_NOTICE,
+Aof.c (src):            redisLog(REDIS_WARNING,
+Aof.c (src):        redisLog(REDIS_NOTICE,
+Aof.c (src):        redisLog(REDIS_WARNING,"Unable to obtain the AOF file length. stat: %s",
+Aof.c (src):        redisLog(REDIS_NOTICE,
+Aof.c (src):            redisLog(REDIS_WARNING,
+Aof.c (src):            redisLog(REDIS_WARNING,
+Aof.c (src):        redisLog(REDIS_NOTICE,
+Aof.c (src):            redisLog(REDIS_WARNING,
+Aof.c (src):        redisLog(REDIS_NOTICE, "Background AOF rewrite finished successfully");
+Aof.c (src):        redisLog(REDIS_VERBOSE,
+Aof.c (src):        redisLog(REDIS_WARNING,
+Aof.c (src):        redisLog(REDIS_WARNING,
+Bio.c (src):            redisLog(REDIS_WARNING,"Fatal: Can't initialize Background Jobs.");
+Bio.c (src):        redisLog(REDIS_WARNING,
+Bio.c (src):                redisLog(REDIS_WARNING,
+Bio.c (src):                redisLog(REDIS_WARNING,
+Config.c (src):                redisLog(REDIS_WARNING,"Can't chdir to '%s': %s",
+Config.c (src):                redisLog(REDIS_WARNING,
+Config.c (src):                redisLog(REDIS_WARNING,"WARNING: the new maxmemory value set via CONFIG SET is smaller than the current memory usage. This will result in keys eviction and/or inability to accept new write commands depending on the maxmemory-policy.");
+Config.c (src):            redisLog(REDIS_DEBUG,"Not rewritten option: %s", option);
+Config.c (src):            redisLog(REDIS_WARNING,"CONFIG REWRITE failed: %s", strerror(errno));
+Config.c (src):            redisLog(REDIS_WARNING,"CONFIG REWRITE executed with success.");
+Debug.c (src):        redisLog(REDIS_WARNING,"DB reloaded by DEBUG RELOAD");
+Debug.c (src):        redisLog(REDIS_WARNING,"Append Only File loaded by DEBUG LOADAOF");
+Debug.c (src):    redisLog(REDIS_WARNING,"=== ASSERTION FAILED ===");
+Debug.c (src):    redisLog(REDIS_WARNING,"==> %s:%d '%s' is not true",file,line,estr);
+Debug.c (src):    redisLog(REDIS_WARNING,"(forcing SIGSEGV to print the bug report.)");
+Debug.c (src):    redisLog(REDIS_WARNING,"=== ASSERTION FAILED CLIENT CONTEXT ===");
+Debug.c (src):    redisLog(REDIS_WARNING,"client->flags = %d", c->flags);
+Debug.c (src):    redisLog(REDIS_WARNING,"client->fd = %d", c->fd);
+Debug.c (src):    redisLog(REDIS_WARNING,"client->argc = %d", c->argc);
+Debug.c (src):        redisLog(REDIS_WARNING,"client->argv[%d] = \"%s\" (refcount: %d)",
+Debug.c (src):void redisLogObjectDebugInfo(robj *o) {
+Debug.c (src):    redisLog(REDIS_WARNING,"Object type: %d", o->type);
+Debug.c (src):    redisLog(REDIS_WARNING,"Object encoding: %d", o->encoding);
+Debug.c (src):    redisLog(REDIS_WARNING,"Object refcount: %d", o->refcount);
+Debug.c (src):        redisLog(REDIS_WARNING,"Object raw string len: %zu", sdslen(o->ptr));
+Debug.c (src):            redisLog(REDIS_WARNING,"Object raw string content: %s", repr);
+Debug.c (src):        redisLog(REDIS_WARNING,"List length: %d", (int) listTypeLength(o));
+Debug.c (src):        redisLog(REDIS_WARNING,"Set size: %d", (int) setTypeSize(o));
+Debug.c (src):        redisLog(REDIS_WARNING,"Hash size: %d", (int) hashTypeLength(o));
+Debug.c (src):        redisLog(REDIS_WARNING,"Sorted set size: %d", (int) zsetLength(o));
+Debug.c (src):            redisLog(REDIS_WARNING,"Skiplist level: %d", (int) ((zset*)o->ptr)->zsl->level);
+Debug.c (src):    redisLog(REDIS_WARNING,"=== ASSERTION FAILED OBJECT CONTEXT ===");
+Debug.c (src):    redisLogObjectDebugInfo(o);
+Debug.c (src):    redisLog(REDIS_WARNING,"------------------------------------------------");
+Debug.c (src):    redisLog(REDIS_WARNING,"!!! Software Failure. Press left mouse button to continue");
+Debug.c (src):    redisLog(REDIS_WARNING,"Guru Meditation: %s #%s:%d",msg,file,line);
+Debug.c (src):    redisLog(REDIS_WARNING,"(forcing SIGSEGV in order to print the stack trace)");
+Debug.c (src):    redisLog(REDIS_WARNING,"------------------------------------------------");
+Debug.c (src):        redisLog(REDIS_WARNING,
+Debug.c (src):            redisLog(REDIS_WARNING, "(%08lx) -> %08lx", addr, val);
+Debug.c (src):            redisLog(REDIS_WARNING, "(%016lx) -> %016lx", addr, val);
+Debug.c (src):    redisLog(REDIS_WARNING, "--- REGISTERS");
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING, "--- CURRENT CLIENT INFO");
+Debug.c (src):    redisLog(REDIS_WARNING,"client: %s", client);
+Debug.c (src):        redisLog(REDIS_WARNING,"argv[%d]: '%s'", j, (char*)decoded->ptr);
+Debug.c (src):            redisLog(REDIS_WARNING,"key '%s' found in DB containing the following object:", (char*)key->ptr);
+Debug.c (src):            redisLogObjectDebugInfo(val);
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING, "--- STACK TRACE");
+Debug.c (src):    redisLog(REDIS_WARNING, "--- INFO OUTPUT");
+Debug.c (src):    redisLogRaw(REDIS_WARNING, infostring);
+Debug.c (src):    redisLog(REDIS_WARNING, "--- CLIENT LIST OUTPUT");
+Debug.c (src):    redisLogRaw(REDIS_WARNING, clients);
+Debug.c (src):    redisLog(REDIS_WARNING, "--- FAST MEMORY TEST");
+Debug.c (src):        redisLog(REDIS_WARNING,
+Debug.c (src):        redisLog(REDIS_WARNING,
+Debug.c (src):    redisLog(REDIS_WARNING,
+Debug.c (src):void redisLogHexDump(int level, char *descr, void *value, size_t len) {
+Debug.c (src):    redisLog(level,"%s (hexdump):", descr);
+Debug.c (src):            redisLogRaw(level|REDIS_LOG_RAW,buf);
+Debug.c (src):    redisLogRaw(level|REDIS_LOG_RAW,"\n");
+Debug.c (src):    redisLogFromHandler(REDIS_WARNING,"\n--- WATCHDOG TIMER EXPIRED ---");
+Debug.c (src):    redisLogFromHandler(REDIS_WARNING,"Sorry: no support for backtrace().");
+Debug.c (src):    redisLogFromHandler(REDIS_WARNING,"--------\n");
+Networking.c (src):        redisLog(REDIS_WARNING,
+Networking.c (src):                redisLog(REDIS_WARNING,
+Networking.c (src):        redisLog(REDIS_VERBOSE,"Accepted %s:%d", cip, cport);
+Networking.c (src):                redisLog(REDIS_WARNING,
+Networking.c (src):        redisLog(REDIS_VERBOSE,"Accepted connection to %s", server.unixsocket);
+Networking.c (src):        redisLog(REDIS_WARNING,"Connection with master lost.");
+Networking.c (src):        redisLog(REDIS_WARNING,"Connection with slave %s lost.",
+Networking.c (src):            redisLog(REDIS_VERBOSE,
+Networking.c (src):        redisLog(REDIS_VERBOSE,
+Networking.c (src):            redisLog(REDIS_VERBOSE, "Reading from client: %s",strerror(errno));
+Networking.c (src):        redisLog(REDIS_VERBOSE, "Client closed connection");
+Networking.c (src):        redisLog(REDIS_WARNING,"Closing client that reached max query buffer length: %s (qbuf initial bytes: %s)", ci, bytes);
+Networking.c (src):        redisLog(REDIS_WARNING,"Client %s scheduled to be closed ASAP for overcoming of output buffer limits.", client);
+Rdb.c (src):        redisLog(REDIS_WARNING, "Failed opening .rdb for saving: %s",
+Rdb.c (src):        redisLog(REDIS_WARNING,"Error moving temp DB file on the final destination: %s", strerror(errno));
+Rdb.c (src):    redisLog(REDIS_NOTICE,"DB saved on disk");
+Rdb.c (src):    redisLog(REDIS_WARNING,"Write error saving DB on disk: %s", strerror(errno));
+Rdb.c (src):                redisLog(REDIS_NOTICE,
+Rdb.c (src):            redisLog(REDIS_WARNING,"Can't save in background: fork: %s",
+Rdb.c (src):        redisLog(REDIS_NOTICE,"Background saving started by pid %d",childpid);
+Rdb.c (src):        redisLog(REDIS_WARNING,"Wrong signature trying to load DB from file");
+Rdb.c (src):        redisLog(REDIS_WARNING,"Can't handle RDB format version %d",rdbver);
+Rdb.c (src):                redisLog(REDIS_WARNING,"FATAL: Data file was created with a Redis server configured to handle more than %d databases. Exiting\n", server.dbnum);
+Rdb.c (src):            redisLog(REDIS_WARNING,"RDB file was saved with checksum disabled: no check performed.");
+Rdb.c (src):            redisLog(REDIS_WARNING,"Wrong RDB checksum. Aborting now.");
+Rdb.c (src):    redisLog(REDIS_WARNING,"Short read or OOM loading DB. Unrecoverable error, aborting now.");
+Rdb.c (src):        redisLog(REDIS_NOTICE,
+Rdb.c (src):        redisLog(REDIS_WARNING, "Background saving error");
+Rdb.c (src):        redisLog(REDIS_WARNING,
+Rdb.c (src):        redisLog(REDIS_NOTICE,
+Rdb.c (src):        redisLog(REDIS_WARNING, "Background transfer error");
+Rdb.c (src):        redisLog(REDIS_WARNING,
+Rdb.c (src):                redisLog(REDIS_WARNING,
+Rdb.c (src):                redisLog(REDIS_WARNING,
+Rdb.c (src):                redisLog(REDIS_NOTICE,
+Rdb.c (src):            redisLog(REDIS_WARNING,"Can't save in background: fork: %s",
+Rdb.c (src):        redisLog(REDIS_NOTICE,"Background RDB transfer started by pid %d",childpid);
+Redis.c (src): * redisLog() is to prefer. */
+Redis.c (src):void redisLogRaw(int level, const char *msg) {
+Redis.c (src):/* Like redisLogRaw() but with printf-alike support. This is the function that
+Redis.c (src):void redisLog(int level, const char *fmt, ...) {
+Redis.c (src):    redisLogRaw(level,msg);
+Redis.c (src): * where we need printf-alike features are served by redisLog(). */
+Redis.c (src):void redisLogFromHandler(int level, const char *msg) {
+Redis.c (src):        redisLog(REDIS_VERBOSE,"Closing idle client");
+Redis.c (src):        redisLog(REDIS_WARNING,"SIGTERM received but errors trying to shut down the server, check the logs for more information");
+Redis.c (src):                redisLog(REDIS_VERBOSE,"DB %d: %lld keys (%lld volatile) in %lld slots HT.",j,used,vkeys,size);
+Redis.c (src):            redisLog(REDIS_VERBOSE,
+Redis.c (src):                redisLog(REDIS_WARNING,
+Redis.c (src):                redisLog(REDIS_NOTICE,"%d changes in %d seconds. Saving...",
+Redis.c (src):                redisLog(REDIS_NOTICE,"Starting automatic rewriting of AOF on %lld%% growth",growth);
+Redis.c (src):        redisLog(REDIS_WARNING,"Unable to obtain the current NOFILE limit (%s), assuming 1024 and setting the max clients configuration accordingly.",
+Redis.c (src):                    redisLog(REDIS_WARNING,"Your current 'ulimit -n' "
+Redis.c (src):                redisLog(REDIS_WARNING,"You requested maxclients of %d "
+Redis.c (src):                redisLog(REDIS_WARNING,"Redis can't set maximum open files "
+Redis.c (src):                redisLog(REDIS_WARNING,"Current maximum open files is %llu. "
+Redis.c (src):                redisLog(REDIS_NOTICE,"Increased maximum number of open files "
+Redis.c (src):            redisLog(REDIS_WARNING,"WARNING: The TCP backlog setting of %d cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of %d.", server.tcp_backlog, somaxconn);
+Redis.c (src):            redisLog(REDIS_WARNING,
+Redis.c (src):            redisLog(REDIS_WARNING, "Opening socket: %s", server.neterr);
+Redis.c (src):        redisLog(REDIS_WARNING, "Configured to not listen anywhere, exiting.");
+Redis.c (src):            redisLog(REDIS_WARNING, "Can't open the append-only file: %s",
+Redis.c (src):        redisLog(REDIS_WARNING,"Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with 'noeviction' policy now.");
+Redis.c (src):        redisLog(REDIS_NOTICE,"Removing the unix socket file.");
+Redis.c (src):    redisLog(REDIS_WARNING,"User requested shutdown...");
+Redis.c (src):        redisLog(REDIS_WARNING,"There is a child saving an .rdb. Killing it!");
+Redis.c (src):                redisLog(REDIS_WARNING, "Writing initial AOF, can't exit.");
+Redis.c (src):            redisLog(REDIS_WARNING,
+Redis.c (src):        redisLog(REDIS_NOTICE,"Calling fsync() on the AOF file.");
+Redis.c (src):        redisLog(REDIS_NOTICE,"Saving the final RDB snapshot before exiting.");
+Redis.c (src):            redisLog(REDIS_WARNING,"Error trying to save the DB, can't exit.");
+Redis.c (src):        redisLog(REDIS_NOTICE,"Removing the pid file.");
+Redis.c (src):    redisLog(REDIS_WARNING,"%s is now ready to exit, bye bye...",
+Redis.c (src):        redisLog(REDIS_WARNING,"WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.");
+Redis.c (src):        redisLog(REDIS_WARNING,"WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.");
+Redis.c (src):        redisLog(REDIS_NOTICE,
+Redis.c (src):        redisLogRaw(REDIS_NOTICE|REDIS_LOG_RAW,buf);
+Redis.c (src):        redisLogFromHandler(REDIS_WARNING, "You insist... exiting now.");
+Redis.c (src):    redisLogFromHandler(REDIS_WARNING, msg);
+Redis.c (src):            redisLog(REDIS_NOTICE,"DB loaded from append only file: %.3f seconds",(float)(ustime()-start)/1000000);
+Redis.c (src):            redisLog(REDIS_NOTICE,"DB loaded from disk: %.3f seconds",
+Redis.c (src):            redisLog(REDIS_WARNING,"Fatal error loading the DB: %s. Exiting.",strerror(errno));
+Redis.c (src):    redisLog(REDIS_WARNING,"Out Of Memory allocating %zu bytes!",
+Redis.c (src):            redisLog(REDIS_WARNING,
+Redis.c (src):            redisLog(REDIS_WARNING,
+Redis.c (src):        redisLog(REDIS_WARNING, "Warning: no config file specified, using the default config. In order to specify a config file use %s /path/to/%s.conf", argv[0], server.sentinel_mode ? "sentinel" : "redis");
+Redis.c (src):        redisLog(REDIS_WARNING,"Server started, Redis version " REDIS_VERSION);
+Redis.c (src):            redisLog(REDIS_NOTICE,"The server is now ready to accept connections on port %d", server.port);
+Redis.c (src):            redisLog(REDIS_NOTICE,"The server is now ready to accept connections at %s", server.unixsocket);
+Redis.c (src):        redisLog(REDIS_WARNING,"WARNING: You specified a maxmemory value that is less than 1MB (current value is %llu bytes). Are you sure this is what you really want?", server.maxmemory);
+Redis.h (src):void redisLog(int level, const char *fmt, ...)
+Redis.h (src):void redisLog(int level, const char *fmt, ...);
+Redis.h (src):void redisLogRaw(int level, const char *msg);
+Redis.h (src):void redisLogFromHandler(int level, const char *msg);
+Redis.h (src):void redisLogObjectDebugInfo(robj *o);
+Redis.h (src):void redisLogHexDump(int level, char *descr, void *value, size_t len);
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] Slave request offset: %lld", offset);
+Replication.c (src):        redisLog(REDIS_DEBUG, "[PSYNC] Backlog history len is zero");
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] Backlog size: %lld",
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] First byte: %lld",
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] History len: %lld",
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] Current index: %lld",
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] Skipping: %lld", skip);
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] Index of first byte: %lld", j);
+Replication.c (src):    redisLog(REDIS_DEBUG, "[PSYNC] Reply total length: %lld", len);
+Replication.c (src):        redisLog(REDIS_DEBUG, "[PSYNC] addReply() length: %lld", thislen);
+Replication.c (src):            redisLog(REDIS_NOTICE,"Partial resynchronization not accepted: "
+Replication.c (src):            redisLog(REDIS_NOTICE,"Full resync requested by slave %s",
+Replication.c (src):        redisLog(REDIS_NOTICE,
+Replication.c (src):            redisLog(REDIS_WARNING,
+Replication.c (src):    redisLog(REDIS_NOTICE,
+Replication.c (src):    redisLog(REDIS_NOTICE,"Starting BGSAVE for SYNC with target: %s",
+Replication.c (src):    redisLog(REDIS_NOTICE,"Slave %s asks for synchronization",
+Replication.c (src):            redisLog(REDIS_NOTICE,"Waiting for end of BGSAVE for SYNC");
+Replication.c (src):            redisLog(REDIS_NOTICE,"Waiting for next BGSAVE for SYNC");
+Replication.c (src):        redisLog(REDIS_NOTICE,"Waiting for next BGSAVE for SYNC");
+Replication.c (src):                redisLog(REDIS_NOTICE,"Delay next BGSAVE for SYNC");
+Replication.c (src):                redisLog(REDIS_NOTICE,"Replication failed, can't BGSAVE");
+Replication.c (src):        redisLog(REDIS_WARNING,"Unable to register writable event for slave bulk transfer: %s", strerror(errno));
+Replication.c (src):    redisLog(REDIS_NOTICE,"Synchronization with slave %s succeeded",
+Replication.c (src):            redisLog(REDIS_VERBOSE,"Write error sending RDB preamble to slave: %s",
+Replication.c (src):        redisLog(REDIS_WARNING,"Read error sending DB to slave: %s",
+Replication.c (src):            redisLog(REDIS_WARNING,"Write error sending DB to slave: %s",
+Replication.c (src):                redisLog(REDIS_NOTICE,
+Replication.c (src):                    redisLog(REDIS_WARNING,"SYNC failed. BGSAVE child returned an error");
+Replication.c (src):                    redisLog(REDIS_WARNING,"SYNC failed. Can't open/stat DB after BGSAVE: %s", strerror(errno));
+Replication.c (src):            redisLog(REDIS_WARNING,"SYNC failed. BGSAVE failed");
+Replication.c (src):            redisLog(REDIS_WARNING,
+Replication.c (src):            redisLog(REDIS_WARNING,
+Replication.c (src):            redisLog(REDIS_WARNING,"Bad protocol from MASTER, the first byte is not '$' (we received '%s'), are you sure the host and port are right?", buf);
+Replication.c (src):            redisLog(REDIS_NOTICE,
+Replication.c (src):            redisLog(REDIS_NOTICE,
+Replication.c (src):        redisLog(REDIS_WARNING,"I/O error trying to sync with MASTER: %s",
+Replication.c (src):        redisLog(REDIS_WARNING,"Write error or short write writing to the DB dump file needed for MASTER <-> SLAVE synchronization: %s", strerror(errno));
+Replication.c (src):            redisLog(REDIS_WARNING,"Error truncating the RDB file received from the master for SYNC: %s", strerror(errno));
+Replication.c (src):            redisLog(REDIS_WARNING,"Failed trying to rename the temp DB into dump.rdb in MASTER <-> SLAVE synchronization: %s", strerror(errno));
+Replication.c (src):        redisLog(REDIS_NOTICE, "MASTER <-> SLAVE sync: Flushing old data");
+Replication.c (src):        redisLog(REDIS_NOTICE, "MASTER <-> SLAVE sync: Loading DB in memory");
+Replication.c (src):            redisLog(REDIS_WARNING,"Failed trying to load the MASTER synchronization DB from disk");
+Replication.c (src):        redisLog(REDIS_NOTICE, "MASTER <-> SLAVE sync: Finished with success");
+Replication.c (src):                redisLog(REDIS_WARNING,"Failed enabling the AOF after successful master synchronization! Trying it again in one second.");
+Replication.c (src):                redisLog(REDIS_WARNING,"FATAL: this slave instance finished the synchronization with its master, but the AOF can't be turned on. Exiting now.");
+Replication.c (src):        redisLog(REDIS_NOTICE,"Trying a partial resynchronization (request %s:%s).", psync_runid, psync_offset);
+Replication.c (src):        redisLog(REDIS_NOTICE,"Partial resynchronization not possible (no cached master)");
+Replication.c (src):            redisLog(REDIS_WARNING,
+Replication.c (src):            redisLog(REDIS_NOTICE,"Full resync from master: %s:%lld",
+Replication.c (src):        redisLog(REDIS_NOTICE,
+Replication.c (src):        redisLog(REDIS_WARNING,
+Replication.c (src):        redisLog(REDIS_NOTICE,
+Replication.c (src):        redisLog(REDIS_WARNING,"Error condition on socket for SYNC: %s",
+Replication.c (src):        redisLog(REDIS_NOTICE,"Non blocking connect for SYNC fired the event.");
+Replication.c (src):            redisLog(REDIS_WARNING,
+Replication.c (src):            redisLog(REDIS_WARNING,"Error reply to PING from master: '%s'",buf);
+Replication.c (src):            redisLog(REDIS_NOTICE,
+Replication.c (src):            redisLog(REDIS_WARNING,"Unable to AUTH to MASTER: %s",err);
+Replication.c (src):            redisLog(REDIS_NOTICE,"(Non critical) Master does not understand REPLCONF listening-port: %s", err);
+Replication.c (src):        redisLog(REDIS_NOTICE, "MASTER <-> SLAVE sync: Master accepted a Partial Resynchronization.");
+Replication.c (src):        redisLog(REDIS_NOTICE,"Retrying with SYNC...");
+Replication.c (src):            redisLog(REDIS_WARNING,"I/O error writing to MASTER: %s",
+Replication.c (src):        redisLog(REDIS_WARNING,"Opening the temp file needed for MASTER <-> SLAVE synchronization: %s",strerror(errno));
+Replication.c (src):        redisLog(REDIS_WARNING,
+Replication.c (src):        redisLog(REDIS_WARNING,"Unable to connect to MASTER: %s",
+Replication.c (src):        redisLog(REDIS_WARNING,"Can't create readable event for SYNC");
+Replication.c (src):            redisLog(REDIS_NOTICE,"MASTER MODE enabled (user request)");
+Replication.c (src):            redisLog(REDIS_NOTICE,"SLAVE OF would result into synchronization with the master we are already connected with. No operation performed.");
+Replication.c (src):        redisLog(REDIS_NOTICE,"SLAVE OF %s:%d enabled (user request)",
+Replication.c (src):    redisLog(REDIS_NOTICE,"Caching the disconnected master state.");
+Replication.c (src):    redisLog(REDIS_NOTICE,"Discarding previously cached master state.");
+Replication.c (src):        redisLog(REDIS_WARNING,"Error resurrecting the cached master, impossible to add the readable handler: %s", strerror(errno));
+Replication.c (src):            redisLog(REDIS_WARNING,"Error resurrecting the cached master, impossible to add the writable handler: %s", strerror(errno));
+Replication.c (src):        redisLog(REDIS_WARNING,"Timeout connecting to the MASTER...");
+Replication.c (src):        redisLog(REDIS_WARNING,"Timeout receiving bulk data from MASTER... If the problem persists try to set the 'repl-timeout' parameter in redis.conf to a larger value.");
+Replication.c (src):        redisLog(REDIS_WARNING,"MASTER timeout: no data nor PING received...");
+Replication.c (src):        redisLog(REDIS_NOTICE,"Connecting to MASTER %s:%d",
+Replication.c (src):            redisLog(REDIS_NOTICE,"MASTER <-> SLAVE sync started");
+Replication.c (src):                redisLog(REDIS_WARNING, "Disconnecting timedout slave: %s",
+Replication.c (src):            redisLog(REDIS_NOTICE,
+Scripting.c (src):    redisLogRaw(level,log);
+Scripting.c (src):        redisLog(REDIS_WARNING,"Lua slow script detected: still in execution after %lld milliseconds. You can try killing the script using the SCRIPT KILL command.",elapsed);
+Scripting.c (src):        redisLog(REDIS_WARNING,"Lua script killed by user with SCRIPT KILL.");
+Sentinel.c (src):    redisLog(REDIS_WARNING,"Sentinel runid is %s", server.runid);
+Sentinel.c (src):        redisLog(REDIS_WARNING,
+Sentinel.c (src):        redisLog(REDIS_WARNING,
+Sentinel.c (src):        redisLog(level,"%s %s",type,msg);
+Sentinel.c (src):            redisLog(REDIS_WARNING,"wait3() returned a pid (%ld) we can't find in our scripts execution queue!", (long)pid);
+Sentinel.c (src):    redisLog(REDIS_WARNING,"WARNING: Sentinel was not able to save the new configuration on disk!!!: %s", strerror(errno));
+Sentinel.c (src):        redisLog(REDIS_WARNING,"Executing user requested FAILOVER of '%s'",
+Sentinel.c (src):                redisLog(REDIS_WARNING,
+Sentinel.c (src):            redisLog(REDIS_WARNING,
+T_hash.c (src):                redisLogHexDump(REDIS_WARNING,"ziplist with dup elements dump",
