@@ -281,7 +281,9 @@ sds sdscatsds(sds s, const sds t) {
 }
 
 /* Destructively modify the sds string 's' to hold the specified binary
- * safe string pointed by 't' of length 'len' bytes. */
+ * safe string pointed by 't' of length 'len' bytes. 
+ * 破坏性的修改原来的sds为给定长度的二进制安全string
+ */
 sds sdscpylen(sds s, const char *t, size_t len) {
     struct sdshdr *sh = (void*) (s-(sizeof(struct sdshdr)));
     size_t totlen = sh->free+sh->len;
@@ -300,7 +302,9 @@ sds sdscpylen(sds s, const char *t, size_t len) {
 }
 
 /* Like sdscpylen() but 't' must be a null-termined string so that the length
- * of the string is obtained with strlen(). */
+ * of the string is obtained with strlen(). 
+ * 类似sdscpylen()，但是传入的string必须是以null结尾的c字串
+ */
 sds sdscpy(sds s, const char *t) {
     return sdscpylen(s, t, strlen(t));
 }
@@ -310,8 +314,11 @@ sds sdscpy(sds s, const char *t) {
  * SDS_LLSTR_SIZE bytes.
  *
  * The function returns the length of the null-terminated string
- * representation stored at 's'. */
-#define SDS_LLSTR_SIZE 21
+ * representation stored at 's'. 
+ * 把longlong 64位长整形追加到已有string,注意已有string的空间必须大于21，因为longlong类型最大值有20位
+ *
+ */
+#define SDS_LLSTR_SIZE 21   //unsigned  long long ->2^64-1=18446744073709551615 最长20位
 int sdsll2str(char *s, long long value) {
     char *p, aux;
     unsigned long long v;
@@ -375,6 +382,7 @@ int sdsull2str(char *s, unsigned long long v) {
 /* Create an sds string from a long long value. It is much faster than:
  *
  * sdscatprintf(sdsempty(),"%lld\n", value);
+ * 转换longlong为sds string,该函数比sdscatprintf(sdsempty(),"%lld\n", value)格式化拼接要快
  */
 sds sdsfromlonglong(long long value) {
     char buf[SDS_LLSTR_SIZE];
@@ -383,7 +391,9 @@ sds sdsfromlonglong(long long value) {
     return sdsnewlen(buf,len);
 }
 
-/* Like sdscatprintf() but gets va_list instead of being variadic. */
+/* Like sdscatprintf() but gets va_list instead of being variadic.
+ * 格式化打印，与sdscatprintf 不同的是使用va_list宏代替了可变参数
+ */
 sds sdscatvprintf(sds s, const char *fmt, va_list ap) {
     va_list cpy;
     char staticbuf[1024], *buf = staticbuf, *t;
@@ -434,7 +444,7 @@ sds sdscatvprintf(sds s, const char *fmt, va_list ap) {
  *
  * Often you need to create a string from scratch with the printf-alike
  * format. When this is the need, just use sdsempty() as the target string:
- *
+ * 格式化创建sds string，值得注意是创建新串时可以调用sdsempty()返回的指针作为目标string
  * s = sdscatprintf(sdsempty(), "... your format ...", args);
  */
 sds sdscatprintf(sds s, const char *fmt, ...) {
@@ -461,6 +471,8 @@ sds sdscatprintf(sds s, const char *fmt, ...) {
  * %u - unsigned int
  * %U - 64 bit unsigned integer (unsigned long long, uint64_t)
  * %% - Verbatim "%" character.
+ *格式化函数，但是比sdscatprintf速度要快，因为没有依赖c标准库的sprintf()家族的函数,这些函数比较慢
+ *另外直接处理sds string数据也提高了性能
  */
 sds sdscatfmt(sds s, char const *fmt, ...) {
     struct sdshdr *sh = (void*) (s-(sizeof(struct sdshdr)));
@@ -575,6 +587,7 @@ sds sdscatfmt(sds s, char const *fmt, ...) {
  * printf("%s\n", s);
  *
  * Output will be just "Hello World".
+ * 对现有sds string去除指定字母集合的字母，值得注意的是原来的string是非法了的，所有引用需要指向返回的指针
  */
 sds sdstrim(sds s, const char *cset) {
     struct sdshdr *sh = (void*) (s-(sizeof(struct sdshdr)));
@@ -608,6 +621,8 @@ sds sdstrim(sds s, const char *cset) {
  *
  * s = sdsnew("Hello World");
  * sdsrange(s,1,-1); => "ello World"
+ * 把原sds string转为给定范围的字串，开始和结束的值可以是-1表示倒数第一个字母，-2表示倒数第二个字母
+ * 开始和结束的索引对应的字母也会包含在子串里，获取子串的操作都是在原来sds string进行操作的
  */
 void sdsrange(sds s, int start, int end) {
     struct sdshdr *sh = (void*) (s-(sizeof(struct sdshdr)));
@@ -754,7 +769,9 @@ void sdsfreesplitres(sds *tokens, int count) {
  * escapes in the form "\n\r\a...." or "\x<hex-number>".
  *
  * After the call, the modified sds string is no longer valid and all the
- * references must be substituted with the new pointer returned by the call. */
+ * references must be substituted with the new pointer returned by the call.
+ * 对不能打印的特殊字符进行转义，并添加到现有的sds string 中
+ */
 sds sdscatrepr(sds s, const char *p, size_t len) {
     s = sdscatlen(s,"\"",1);
     while(len--) {
@@ -781,14 +798,18 @@ sds sdscatrepr(sds s, const char *p, size_t len) {
 }
 
 /* Helper function for sdssplitargs() that returns non zero if 'c'
- * is a valid hex digit. */
+ * is a valid hex digit. 
+ * 判断是否是合法的十六进制的字符
+ */
 int is_hex_digit(char c) {
     return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') ||
            (c >= 'A' && c <= 'F');
 }
 
 /* Helper function for sdssplitargs() that converts a hex digit into an
- * integer from 0 to 15 */
+ * integer from 0 to 15
+ *转换十六进制为十进制
+ */
 int hex_digit_to_int(char c) {
     switch(c) {
     case '0': return 0;
@@ -829,6 +850,7 @@ int hex_digit_to_int(char c) {
  * input string is empty, or NULL if the input contains unbalanced
  * quotes or closed quotes followed by non space characters
  * as in: "foo"bar or "foo'
+ * 对给定string解析成参数集合
  */
 sds *sdssplitargs(const char *line, int *argc) {
     const char *p = line;
@@ -948,7 +970,9 @@ err:
  * will have the effect of turning the string "hello" into "0ell1".
  *
  * The function returns the sds string pointer, that is always the same
- * as the input pointer since no resize is needed. */
+ * as the input pointer since no resize is needed.
+ * 对原sds string进行替换给定的字节序列
+ */
 sds sdsmapchars(sds s, const char *from, const char *to, size_t setlen) {
     size_t j, i, l = sdslen(s);
 
@@ -964,7 +988,9 @@ sds sdsmapchars(sds s, const char *from, const char *to, size_t setlen) {
 }
 
 /* Join an array of C strings using the specified separator (also a C string).
- * Returns the result as an sds string. */
+ * Returns the result as an sds string.
+ * 对一个c语言string数组进行拼接，拼接的衔接符是sep
+ */
 sds sdsjoin(char **argv, int argc, char *sep) {
     sds join = sdsempty();
     int j;
